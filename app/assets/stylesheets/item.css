@@ -1,0 +1,102 @@
+.Item-page {
+  display: flex;
+  justify-content: space-between;
+}
+.Menu {
+  margin: 20px;
+  width: 500px;
+}
+.Details {
+  height: 85 vh;
+  width: 400px;
+  background-color: rgb(230, 223, 223);
+}
+.Cart {
+  height: 50%;
+}
+.Orders {
+  height: 50%;
+}
+.ItemCategory {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.ItemCategory-name {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: rgb(29, 28, 37);
+}
+.ItemCategory-item {
+  font-family: sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: rgb(29, 28, 37);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.ItemCategory-item-element {
+  display: flex;
+  margin-left: 10px;
+}
+
+.ItemCategory-item-elementbtn-add {
+  height: 20px;
+  width: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 8px;
+  border: 0px;
+  background-color: rgb(52, 197, 96);
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+}
+.ItemCategory-item-elementbtn-remove {
+  height: 20px;
+  width: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 8px;
+  border: 0px;
+  background-color: rgb(223, 110, 110);
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+}
+.ItemCategory-item-elementadd {
+  display: inline-block;
+  height: 20px;
+  width: 70px;
+  margin-right: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  border: 0px;
+  background-color: rgb(41, 142, 182);
+  color: white;
+}
+.ItemCategory-item-elementtxt {
+  font-size: 20px;
+}
+.btn-form {
+  height: 20px;
+}
+
+.Cart-heading {
+  margin: 20px;
+  text-align: center;
+  font-size: 32px;
+}
+.Cart-element {
+  display: flex;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.Cart-element-text {
+  width: 100px;
+  margin-right: 30px;
+  margin-bottom: 2px;
+}

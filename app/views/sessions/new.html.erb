@@ -1,0 +1,20 @@
+<div class="Sign">
+
+  <div class="SignupForm">
+  <p class="Signup-header">Cafeteria App</p>
+  <p class="Sign-header">Sign-in</p>
+    <%=form_with(url: session_path , method: "post") do |form| %>
+    <div class="SignupForm-input">
+        <p class="SignupForm-label">Email</p>
+        <%=form.email_field :email , class: "SignupForm-text"%>
+      </div>
+      <div class="SignupForm-input">
+      <p class="SignupForm-label">Password</p>
+      <%=form.password_field :password, class: "SignupForm-text" %>
+      </div>
+      <div class="SignupForm-input">
+      <%= form.submit "Sign-in", class: "SignupForm-submit"%>
+      </div>
+    <%end%>
+  </div>
+</div>

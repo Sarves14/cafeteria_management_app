@@ -1,0 +1,43 @@
+.Signup-header {
+  font-family: OpenSans-Semibold;
+  font-weight: 600;
+  font-size: 32px;
+  color: #453c52;
+  letter-spacing: 0.14px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+}
+.SignupForm-label {
+  width: 150px;
+  font-size: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.SignupForm-input {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.SignupForm-text {
+  padding: 5px;
+  font-size: 20px;
+}
+.SignupForm-submit {
+  font-size: 25px;
+  padding: 5px;
+  background-color: rgb(29, 192, 100);
+  color: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 3px;
+}
+.Sign-header {
+  font-size: 24px;
+  margin-bottom: 25px;
+  margin-left: 190px;
+}
+.Signin-error {
+  margin: 32px auto;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: darkred;
+}

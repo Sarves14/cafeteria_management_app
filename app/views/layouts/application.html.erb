@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CafeteriaManagementApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%if flash[:error]%>
+      <p class="Signin-error"><%=flash[:error]%></p>
+    <%end%>
+    <%if @current_user%>
+      <p class="Home-header">
+        <span class="Home-welcome">
+          Welcome <%=@current_user.first_name%>,
+        </span>
+          <span class="Home-signout"><%= link_to "Sign-out" , delete_session_path , method: "delete"%>
+        </span>
+      </p>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
