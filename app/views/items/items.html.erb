@@ -1,3 +1,10 @@
+<p class="Home-header">
+  <span class="Home-welcome">
+  Welcome <%=@current_user.first_name%>,
+  </span>
+  <span class="Home-signout"><%= link_to "Sign-out" , delete_session_path , method: "delete"%>
+  </span>
+</p>
 <div class="Item-page">
   <div class="Menu">
     <%Category.all.each do |category|%>
@@ -12,14 +19,14 @@
               <div class="ItemCategory-item">
                 <%if Cart.where("user_id = ? and item_id = ?",@current_user.id, category_item.id).count > 0 &&%>
                   <%=form_with(url: "#{carts_path}/#{category_item.id}", method: "put" , class: "btn-form") do |form|%>
-                    <%= form.hidden_field :item_quantity, value:(Cart.where("user_id = ? and item_id = ?",@current_user.id, category_item.id).first.item_quantity + 1)  %>
+                    <%= form.hidden_field :item_quantity, value: +1  %>
                     <%= form.submit :"+", class: "ItemCategory-item-elementbtn-add" %>
                   <%end%>
                   <p class="ItemCategory-item-elementtxt">
                     <%=Cart.where("user_id = ? and item_id = ?",@current_user.id, category_item.id).first.item_quantity%>
                   </p>
                   <%=form_with(url: "#{carts_path}/#{category_item.id}", method: "put" ) do |form|%>
-                    <%= form.hidden_field :item_quantity, value:(Cart.where("user_id = ? and item_id = ?",@current_user.id, category_item.id).first.item_quantity - 1)  %>
+                    <%= form.hidden_field :item_quantity, value: -1 %>
                     <%= form.submit :"-" , class: "ItemCategory-item-elementbtn-remove"%>
                   <%end%>
                 <%else%>
@@ -61,8 +68,6 @@
           <span class="Cart-element-text" ><%="Rs. #{total}"%></span>
         </p>
       <%end%>
-
-
       <p class="Cart-element">
         <%=form_with(url: "#{orders_path}", method: "post" ) do |form|%>
           <%= form.submit :"Check Out" , data: {confirm: "Are you sure to place order?"}, class: "Cart-checkout"%>
@@ -71,47 +76,24 @@
     </div>
     <hr>
     <div class="Order">
-      <h1>Pending Orders</h1>
+      <%=link_to orders_path, target: :_blank, class: "Order-link" do%>
+        <h1 class="Order-heading">Orders</h1>
+      <%end%>
+      <h1 style="margin-left:20px">Pending Orders</h1>
       <hr>
       <%if Order.where("user_id = ? ",@current_user.id).where(delivered_time: nil).count > 0%>
-        <%orders = Order.where("user_id = ?",@current_user.id)%>
+        <%orders = Order.where("user_id = ?",@current_user.id).where(delivered_time: nil)%>
         <%orders.each do |order_item|%>
-          <div class="Bill">
-            <div class="Bill-header">
-              <p>order id: <%=order_item.id%><p>
-              <p>
-                <%=order_item.ordered_time.localtime.strftime("%d/%m/%Y  %k:%M")%>
-              </p>
-            </div>
-            <div class="Bill-element">
-              <p class="Bill-element-text">s.no</p>
-              <p class="Bill-element-text">item name</p>
-              <p class="Bill-element-text">quantity</p>
-              <p class="Bill-element-text">price</p>
-            </div>
-            <div class="Bill-element">
-              <%items=Orderitem.where("order_id = ?",order_item.id)%>
-              <%items.each_with_index do |item,i|%>
-                <p class="Bill-element-text">
-                  <%=(i+1)%>
+          <%= link_to "#{orders_path}/#{order_item.id}", target: :_blank, class: "Order-link" do%>
+            <div class="Bill">
+              <div class="Bill-header">
+                <p>Order id: <%=order_item.id%><p>
+                <p>
+                  <%=order_item.ordered_time.localtime.strftime("%d/%m/%y  %k:%M")%>
                 </p>
-                <p class="Bill-element-text">
-                  <%=Item.find(item.item_id).item_name%>
-                </p>
-                <p class="Bill-element-text">
-                  <%=item.quantity%>
-                </p>
-                <p class="Bill-element-text">
-                  <%=(item.quantity*Item.find(item.item_id).price)%>
-                </p>
-              <%end%>
+              </div>
             </div>
-            <hr>
-            <div class="Bill-element">
-              <span class="Bill-element-text" >Total</span>
-              <span class="Bill-element-text" ><%="Rs. #{order_item.price}"%></span>
-            </div>
-          </div>
+          <%end%>
           <hr>
         <%end%>
       <%end%>

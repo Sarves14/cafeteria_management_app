@@ -1,0 +1,22 @@
+<p class="Home-header">
+  <span class="Home-welcome">
+  Hello <%=@current_user.first_name%>,
+  </span>
+</p>
+<h1 class="Order-summary">Your Orders</h1>
+<%if Order.where("user_id = ? ",@current_user.id).count > 0%>
+  <%orders = Order.where("user_id = ?",@current_user.id)%>
+  <%orders.each do |order_item|%>
+    <%= link_to "#{orders_path}/#{order_item.id}", class: "Order-link" do%>
+      <div class="Bill">
+        <div class="Bill-header">
+          <p>Order id: <%=order_item.id%><p>
+          <p>
+            <%=order_item.ordered_time.localtime.strftime("%d/%m/%Y  %k:%M")%>
+          </p>
+        </div>
+      </div>
+    <%end%>
+    <hr>
+  <%end%>
+<%end%>

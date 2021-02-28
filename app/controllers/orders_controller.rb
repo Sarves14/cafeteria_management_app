@@ -1,4 +1,12 @@
 class OrdersController < ApplicationController
+  def show
+    render "show", locals: { order_item: Order.find(params[:id]) }
+  end
+
+  def index
+    render "index"
+  end
+
   def create
     user_id = current_user.id
     cart_items = Cart.find_items(user_id)

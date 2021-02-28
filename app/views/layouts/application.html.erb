@@ -14,15 +14,7 @@
     <%if flash[:error]%>
       <p class="Signin-error"><%=flash[:error]%></p>
     <%end%>
-    <%if @current_user%>
-      <p class="Home-header">
-        <span class="Home-welcome">
-          Welcome <%=@current_user.first_name%>,
-        </span>
-          <span class="Home-signout"><%= link_to "Sign-out" , delete_session_path , method: "delete"%>
-        </span>
-      </p>
-    <%end%>
+
     <%= yield %>
   </body>
 </html>

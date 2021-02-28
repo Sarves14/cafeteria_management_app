@@ -11,10 +11,10 @@ class CartsController < ApplicationController
     id = params[:id]
     print id
     cart_item = Cart.where("user_id = ? and item_id = ?", @current_user.id, id).first
-    if (params[:item_quantity] == "0")
+    cart_item.item_quantity += params[:item_quantity].to_i
+    if (cart_item.item_quantity == 0)
       cart_item.destroy
     else
-      cart_item.item_quantity = params[:item_quantity]
       cart_item.save
     end
     redirect_to items_path
