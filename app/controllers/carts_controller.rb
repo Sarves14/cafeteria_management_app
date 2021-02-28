@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  skip_before_action :ensure_clerk_signin
+
   def create
     print params[:id]
     Cart.create!(user_id: current_user.id,

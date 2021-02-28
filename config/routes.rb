@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :items
   resources :carts
   resources :orders
+  resources :clerks
   get "/", to: "home#index"
   get "/signin", to: "sessions#new", as: :new_session
   post "/signin", to: "sessions#create", as: :session

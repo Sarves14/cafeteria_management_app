@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  skip_before_action :ensure_clerk_signin
+
   def show
     render "show", locals: { order_item: Order.find(params[:id]) }
   end

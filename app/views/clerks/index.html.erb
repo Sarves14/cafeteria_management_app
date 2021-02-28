@@ -1,0 +1,35 @@
+<p class="Home-header">
+  <span class="Home-welcome">
+  Hello <%=@current_user.first_name%>,
+  </span>
+</p>
+<h1 style="margin-left:20px;font-size:24px">Pending Orders</h1>
+<%if Order.where(delivered_time: nil).count > 0%>
+  <%orders = Order.where(delivered_time: nil)%>
+  <div class="Bill-header">
+    <p class="Bill-element-text">Order id</p>
+    <p class="Bill-element-text">User id</p>
+    <p class="Bill-element-text">Name</p>
+    <p class="Bill-element-text">Ordered Time</p>
+    <p class="Bill-element-text">Action</p>
+  </div>
+  <hr>
+  <%orders.each do |order_item|%>
+    <%= link_to "#{orders_path}/#{order_item.id}", target: :_blank, class: "Order-link" do%>
+      <div class="Bill">
+        <div class="Bill-header">
+          <p class="Bill-element-text"><%=order_item.id%></p>
+          <p class="Bill-element-text"><%=order_item.user_id%></p>
+          <p class="Bill-element-text"><%=User.find(order_item.user_id).first_name%></p>
+          <p class="Bill-element-text">
+            <%=order_item.ordered_time.localtime.strftime("%d/%m/%y  %k:%M")%>
+          </p>
+          <%=form_with(url: "#{clerks_path}/#{order_item.id}", method: "put" , class: "Bill-element-text" ) do |form|%>
+              <%= form.submit :"Mark Complete", class: "Bill-mark-complete"%>
+            <%end%>
+        </div>
+      </div>
+    <%end%>
+    <hr>
+  <%end%>
+<%end%>

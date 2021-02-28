@@ -135,6 +135,7 @@
   justify-content: space-around;
   margin-bottom: 10px;
   margin-top: 10px;
+  align-items: baseline;
 }
 .Bill-element {
   display: flex;
@@ -162,4 +163,15 @@
   width: 600px;
   text-align: center;
   margin: 20px auto;
+}
+.Bill-mark-complete {
+  display: inline-block;
+  height: 25px;
+  width: 120px;
+  margin-right: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  border: 0px;
+  background-color: rgb(71, 161, 68);
+  color: white;
 }
