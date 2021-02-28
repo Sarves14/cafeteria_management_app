@@ -61,15 +61,60 @@
           <span class="Cart-element-text" ><%="Rs. #{total}"%></span>
         </p>
       <%end%>
-      <%=form_with(url: "#{carts_path}", method: "post" ) do |form|%>
-        <%= form.submit :"Check Out" , class: "Cart-checkout"%>
-      <%end%>
-      <p class="Cart-element">
 
+
+      <p class="Cart-element">
+        <%=form_with(url: "#{orders_path}", method: "post" ) do |form|%>
+          <%= form.submit :"Check Out" , data: {confirm: "Are you sure to place order?"}, class: "Cart-checkout"%>
+        <%end%>
       </p>
     </div>
+    <hr>
     <div class="Order">
-
+      <h1>Pending Orders</h1>
+      <hr>
+      <%if Order.where("user_id = ? ",@current_user.id).where(delivered_time: nil).count > 0%>
+        <%orders = Order.where("user_id = ?",@current_user.id)%>
+        <%orders.each do |order_item|%>
+          <div class="Bill">
+            <div class="Bill-header">
+              <p>order id: <%=order_item.id%><p>
+              <p>
+                <%=order_item.ordered_time.localtime.strftime("%d/%m/%Y  %k:%M")%>
+              </p>
+            </div>
+            <div class="Bill-element">
+              <p class="Bill-element-text">s.no</p>
+              <p class="Bill-element-text">item name</p>
+              <p class="Bill-element-text">quantity</p>
+              <p class="Bill-element-text">price</p>
+            </div>
+            <div class="Bill-element">
+              <%items=Orderitem.where("order_id = ?",order_item.id)%>
+              <%items.each_with_index do |item,i|%>
+                <p class="Bill-element-text">
+                  <%=(i+1)%>
+                </p>
+                <p class="Bill-element-text">
+                  <%=Item.find(item.item_id).item_name%>
+                </p>
+                <p class="Bill-element-text">
+                  <%=item.quantity%>
+                </p>
+                <p class="Bill-element-text">
+                  <%=(item.quantity*Item.find(item.item_id).price)%>
+                </p>
+              <%end%>
+            </div>
+            <hr>
+            <div class="Bill-element">
+              <span class="Bill-element-text" >Total</span>
+              <span class="Bill-element-text" ><%="Rs. #{order_item.price}"%></span>
+            </div>
+          </div>
+          <hr>
+        <%end%>
+      <%end%>
     </div>
   </div>
 </div>

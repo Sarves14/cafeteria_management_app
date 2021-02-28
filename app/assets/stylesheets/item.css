@@ -116,3 +116,26 @@
   display: inline-block;
   margin-left: 100px;
 }
+.Order {
+  font-family: "Times New Roman", Times, serif;
+}
+.Bill {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.Bill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.Bill-element {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.Bill-element-text {
+  width: 100px;
+}
