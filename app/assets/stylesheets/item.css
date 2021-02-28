@@ -91,12 +91,28 @@
 }
 .Cart-element {
   display: flex;
+  align-items: baseline;
   margin-left: 20px;
   margin-bottom: 5px;
   margin-top: 5px;
 }
 .Cart-element-text {
   width: 100px;
+  display: inline-block;
   margin-right: 30px;
   margin-bottom: 2px;
+}
+
+.Cart-checkout {
+  height: 30px;
+  width: 150px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 8px;
+  border: 0px;
+  background-color: rgb(52, 197, 96);
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  margin-left: 100px;
 }

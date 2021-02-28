@@ -51,7 +51,7 @@
           <span class="Cart-element-text" ><%=item.item_name%></span>
           <span class="Cart-element-text"><%=cart_item.item_quantity%></span>
           <span class="Cart-element-text"><%=item.price%></span>
-          <%total=total+item.price%>
+          <%total=total+(item.price*cart_item.item_quantity)%>
         </p>
       <%end%>
       <hr>
@@ -61,6 +61,12 @@
           <span class="Cart-element-text" ><%="Rs. #{total}"%></span>
         </p>
       <%end%>
+      <%=form_with(url: "#{carts_path}", method: "post" ) do |form|%>
+        <%= form.submit :"Check Out" , class: "Cart-checkout"%>
+      <%end%>
+      <p class="Cart-element">
+
+      </p>
     </div>
     <div class="Order">
 
