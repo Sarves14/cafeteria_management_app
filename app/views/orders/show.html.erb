@@ -25,23 +25,23 @@
     <p class="Bill-element-text">Quantity</p>
     <p class="Bill-element-text">Price</p>
   </div>
-  <div class="Bill-element">
     <%items=Orderitem.where("order_id = ?",order_item.id)%>
     <%items.each_with_index do |item,i|%>
-      <p class="Bill-element-text">
-        <%=(i+1)%>
-      </p>
-      <p class="Bill-element-text">
-        <%=Item.find(item.item_id).item_name%>
-      </p>
-      <p class="Bill-element-text">
-        <%=item.quantity%>
-      </p>
-      <p class="Bill-element-text">
-        <%=(item.quantity*Item.find(item.item_id).price)%>
-      </p>
-    <%end%>
-  </div>
+      <div class="Bill-element">
+        <p class="Bill-element-text">
+          <%=(i+1)%>
+        </p>
+        <p class="Bill-element-text">
+          <%=Item.find(item.item_id).item_name%>
+        </p>
+        <p class="Bill-element-text">
+          <%=item.quantity%>
+        </p>
+        <p class="Bill-element-text">
+          <%=(item.quantity*Item.find(item.item_id).price)%>
+        </p>
+      </div>
+      <%end%>
   <hr>
   <div class="Bill-element">
     <span class="Bill-element-text" >Total</span>

@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   skip_before_action :ensure_clerk_signin
+  skip_before_action :ensure_admin_signin
 
   def create
     print params[:id]

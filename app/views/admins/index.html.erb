@@ -1,0 +1,42 @@
+<p class="Home-header">
+  <span class="Home-welcome">
+  Welcome <%=@current_user.first_name%>,
+  </span>
+  <span class="Home-signout"><%= link_to "Sign-out" , delete_session_path , method: "delete"%>
+  </span>
+</p>
+<div class="Category-name">
+  Categories
+  <input type="image" src="plus.png" alt="add" class="Category-add">
+</div>
+<div class="Admin-page">
+  <%Category.all.each do |category|%>
+    <div class="Admin-ItemCategory">
+      <div class="Admin-ItemCategory-div">
+        <h1 class="Admin-ItemCategory-name"><%=category.category_name%></h1>
+        <div class="Admin-ItemCategory-div-options">
+          <input type="image" src="plus.png" alt="add" class="Category-options">
+          <input type="image" src="edit.png" alt="add" class="Category-options">
+          <input type="image" src="delete.png" alt="add" class="Category-options">
+        </div>
+      </div>
+      <%=form_with(url: "#{carts_path}", method: "put" ) do |form|%>
+        <%= form.submit :"Set Active" , class: "Admin-set-active"%>
+      <%end%>
+      <%category.items.each do |category_item|%>
+        <div class="Admin-ItemCategory-div">
+          <div class="Admin-ItemCategory-item-name">
+            <span style="margin-right:30px"><%=category_item.item_name%></span>
+              Rs. <%=category_item.price%>
+          </div>
+            <div class="Admin-ItemCategory-div-options">
+              <input type="image" src="edit.png" alt="add" class="Category-options">
+              <input type="image" src="delete.png" alt="add" class="Category-options">
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <hr>
+  <%end%>
+</div>

@@ -9,7 +9,7 @@
 .Details {
   height: 85 vh;
   width: 400px;
-  background-color: rgb(230, 223, 223);
+  background-color: rgb(242, 248, 255);
 }
 .Cart {
   height: 50%;
@@ -174,4 +174,23 @@
   border: 0px;
   background-color: rgb(71, 161, 68);
   color: white;
+}
+.Order-offline {
+  display: inline-block;
+  height: 35px;
+  width: 250px;
+  margin-right: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  border: 0px;
+  background-color: rgb(71, 161, 68);
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Order-offline-header {
+  height: 50px;
+  text-align: center;
 }

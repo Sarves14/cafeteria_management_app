@@ -44,7 +44,10 @@
   </div>
   <div class="Details">
     <div class="Cart">
-      <h1 class="Cart-heading">My Cart</h1>
+      <div style="display:flex;justify-content:center;align-items:center">
+        <h1 class="Cart-heading">My Cart</h1>
+        <img src="cart.png" alt="cart-img">
+      </div>
       <p class="Cart-element">
           <span class="Cart-element-text" >Item</span>
           <span class="Cart-element-text">Quantity</span>
@@ -96,6 +99,10 @@
           <%end%>
           <hr>
         <%end%>
+        <%else%>
+          <div class="Bill-header">
+            <p class="Bill-element-text">No Pending Orders</p>
+          </div>
       <%end%>
     </div>
   </div>

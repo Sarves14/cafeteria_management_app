@@ -1,4 +1,6 @@
 class ClerksController < ApplicationController
+  skip_before_action :ensure_admin_signin
+
   def index
     render "index"
   end

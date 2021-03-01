@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_signin
   before_action :ensure_clerk_signin
+  before_action :ensure_admin_signin
 
   def ensure_signin
     unless current_user
@@ -10,6 +11,12 @@ class ApplicationController < ActionController::Base
 
   def ensure_clerk_signin
     unless current_user && current_user.account_type == "clerk"
+      redirect_to "/"
+    end
+  end
+
+  def ensure_admin_signin
+    unless current_user && current_user.account_type == "admin"
       redirect_to "/"
     end
   end

@@ -3,6 +3,11 @@
   Hello <%=@current_user.first_name%>,
   </span>
 </p>
+<div class="Order-offline-header" >
+  <%= link_to items_path, class: "Order-offline" do%>
+    <p>Order for Offline Customer</p>
+  <%end%>
+</div>
 <h1 style="margin-left:20px;font-size:24px">Pending Orders</h1>
 <%if Order.where(delivered_time: nil).count > 0%>
   <%orders = Order.where(delivered_time: nil)%>
@@ -25,11 +30,15 @@
             <%=order_item.ordered_time.localtime.strftime("%d/%m/%y  %k:%M")%>
           </p>
           <%=form_with(url: "#{clerks_path}/#{order_item.id}", method: "put" , class: "Bill-element-text" ) do |form|%>
-              <%= form.submit :"Mark Complete", class: "Bill-mark-complete"%>
-            <%end%>
+            <%= form.submit :"Mark Complete", class: "Bill-mark-complete"%>
+          <%end%>
         </div>
       </div>
     <%end%>
     <hr>
   <%end%>
+<%else%>
+  <div class="Bill-header">
+    <p class="Bill-element-text">No Pending Orders</p>
+  </div>
 <%end%>
