@@ -1,6 +1,7 @@
 .Item-page {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 .Menu {
   margin: 20px;
@@ -123,6 +124,7 @@
   margin: 20px;
   text-align: center;
   font-size: 32px;
+  text-decoration: none;
 }
 .Bill {
   margin-top: 10px;

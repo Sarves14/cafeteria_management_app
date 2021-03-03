@@ -7,31 +7,40 @@
 </p>
 <div class="Category-name">
   Categories
-  <input type="image" src="plus.png" alt="add" class="Category-add">
+  <%= render partial: "add-category-modal"%>
+  <input type="image" src="plus.png" alt="add" class="Category-add"
+  data-toggle="modal" data-target="#add-cat-modal">
 </div>
 <div class="Admin-page">
   <%Category.all.each do |category|%>
     <div class="Admin-ItemCategory">
       <div class="Admin-ItemCategory-div">
-        <h1 class="Admin-ItemCategory-name"><%=category.category_name%></h1>
+        <span style="font-size:24px"><%=category.category_name%></span>
         <div class="Admin-ItemCategory-div-options">
-          <input type="image" src="plus.png" alt="add" class="Category-options">
-          <input type="image" src="edit.png" alt="add" class="Category-options">
-          <input type="image" src="delete.png" alt="add" class="Category-options">
+          <input type="image" src="plus.png" alt="add" class="Category-options"
+          data-toggle="modal" data-target="#add-item-modal" data-id=<%=category.id%>>
+          <input type="image" src="edit.png" alt="edit" class="Category-options"
+          data-toggle="modal" data-target="#edit-cat-modal">
+          <input type="image" src="delete.png" alt="delete" class="Category-options"
+          data-toggle="modal" data-target="#delete-cat-modal">
         </div>
       </div>
-      <%=form_with(url: "#{carts_path}", method: "put" ) do |form|%>
-        <%= form.submit :"Set Active" , class: "Admin-set-active"%>
-      <%end%>
+      <div style="margintop:10px;margin-bottom:20px">
+        <%=form_with(url: "#{carts_path}", method: "put" ) do |form|%>
+          <%= form.submit :"Set Active" , class: "Admin-set-active"%>
+        <%end%>
+      </div>
       <%category.items.each do |category_item|%>
         <div class="Admin-ItemCategory-div">
-          <div class="Admin-ItemCategory-item-name">
-            <span style="margin-right:30px"><%=category_item.item_name%></span>
-              Rs. <%=category_item.price%>
-          </div>
+            <span style="margin-right:30px;font-size:20px" >
+              <%=category_item.item_name%>
+              <span style="margin-left:50px;font-size:20px">Rs. <%=category_item.price%></span>
+            </span>
             <div class="Admin-ItemCategory-div-options">
-              <input type="image" src="edit.png" alt="add" class="Category-options">
-              <input type="image" src="delete.png" alt="add" class="Category-options">
+              <input type="image" src="edit.png" alt="edit" class="Category-options"
+              data-toggle="modal" data-target="#edit-item-modal">
+              <input type="image" src="delete.png" alt="delete" class="Category-options"
+              data-toggle="modal" data-target="#delete-item-modal">
             </div>
           </div>
         </div>
@@ -39,4 +48,52 @@
     </div>
     <hr>
   <%end%>
+</div>
+
+
+<script>
+  $(document).on("click", ".Category-options", function () {
+     var category_id = $(this).data('id');
+     console.log(category_id)
+     $(".modal-body #category_id").val( category_id );
+     // As pointed out in comments,
+     // it is unnecessary to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+</script>
+<%# <%= link_to "Open modal", "#my-modal2", :class => "btn", "data-toggle" => "modal" %> %>
+<div class="modal hide fade" id="add-item-modal" title="My modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <input type="text" id="category_id">
+        <%=form_with(url: menuitems_path , method: "post") do |form| %>
+
+        <div class="Modal-input">
+          <p class="Modal-label">Item Name</p>
+          <%=form.text_field :"item_name" , class: "Modal-text"%>
+        </div>
+        <div class="Modal-input">
+          <p class="Modal-label">Price</p>
+          <%=form.text_field :price , class: "Modal-text"%>
+        </div>
+        <div class="Modal-input">
+          <p class="Modal-label">Description</p>
+          <%=form.text_field :description , class: "Modal-text"%>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= form.submit "Add", class: "btn btn-primary"%>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+        <%end%>
+    </div>
+  </div>
 </div>

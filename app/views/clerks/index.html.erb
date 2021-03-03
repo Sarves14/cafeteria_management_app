@@ -2,6 +2,8 @@
   <span class="Home-welcome">
   Hello <%=@current_user.first_name%>,
   </span>
+  <span class="Home-signout"><%= link_to "Sign-out" , delete_session_path , method: "delete"%>
+  </span>
 </p>
 <div class="Order-offline-header" >
   <%= link_to items_path, class: "Order-offline" do%>

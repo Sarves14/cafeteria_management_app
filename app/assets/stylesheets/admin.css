@@ -92,6 +92,8 @@
   display: flex;
   justify-content: space-between;
   height: 30px;
+  margin-bottom: 20px;
+  align-items: center;
 }
 .Admin-ItemCategory-div-options {
   display: flex;
@@ -131,4 +133,18 @@
   font-size: 20px;
   margin-bottom: 20px;
   color: rgb(29, 28, 37);
+}
+.Modal-label {
+  width: 150px;
+  font-size: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.Modal-input {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.Modal-text {
+  padding: 5px;
+  font-size: 20px;
 }

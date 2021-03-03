@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :orders
   resources :clerks
   resources :admins
+  resources :menuitems
+  resources :categories
   get "/", to: "home#index"
   get "/signin", to: "sessions#new", as: :new_session
   post "/signin", to: "sessions#create", as: :session
