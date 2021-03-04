@@ -1,6 +1,5 @@
 # CAFETERIA-MANAGEMENT-APP
-  DEVELOPED USING RUBY ON RAILS
-  ruby version 2.6.3
+  ruby version 2.6.3    
   rails 6
   
   
