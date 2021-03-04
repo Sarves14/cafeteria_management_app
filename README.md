@@ -11,7 +11,7 @@ This Cafeteria Management App which supports 3 types of users
   3. Admin   
 
    # FEATURES  
-    CUSTOMER:   
+   CUSTOMER:   
 
       1. Sign-In   
       2. Sign-Out   
