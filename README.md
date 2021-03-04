@@ -1,16 +1,16 @@
 # CAFETERIA-MANAGEMENT-APP
-  ruby version 2.6.3    
-  rails version 6.1.3
+  A simple Cafeteria Management App
   
   # ABOUT THE APP
+  ruby version 2.6.3      
+  rails version 6.1.3   
   
 This Cafeteria Management App which supports 3 types of users  
   1. Customer   
   2. Billing Clerk   
   3. Admin   
 
-   FEATURES   
-  
+   # FEATURES  
     CUSTOMER:   
 
       1. Sign-In   
@@ -20,14 +20,14 @@ This Cafeteria Management App which supports 3 types of users
       5. Check all the orders made by him/her   
       6. Check order details   
 
-    BILLING CLERK:  
+   BILLING CLERK:  
 
       1. Sign-In   
       2. Sign-Out   
       3. Browse through Pending orders list and mark as delivered   
       4. Order for Offline Customers   
 
-    ADMIN: 
+   ADMIN: 
 
       1. Sign-In   
       2. Sign-Out   
