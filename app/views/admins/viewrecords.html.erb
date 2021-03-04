@@ -1,0 +1,37 @@
+<p class="Home-header">
+  <span class="Home-welcome">
+  Hello <%=@current_user.first_name%>,
+  </span>
+</p>
+<h1 class="Order-summary">Orders</h1>
+
+<%if Order.all.count > 0%>
+  <%orders = Order.all%>
+  <div class="Bill" style="display:flex;justify-content:space-evenly">
+
+    <p style="width:150px">Order id</p>
+    <p style="width:150px">
+      User id
+    </p>
+    <p style="width:150px">
+      User Name
+    </p>
+
+  </div>
+  <%orders.each do |order_item|%>
+    <%= link_to "#{orders_path}/#{order_item.id}", class: "Order-link" do%>
+      <div class="Bill" style="display:flex;justify-content:space-evenly">
+          <p style="width:150px"><%=order_item.id%></p>
+          <p style="width:150px">
+            <%=order_item.user_id%>
+          </p>
+          <p style="width:150px">
+            <%=User.find(order_item.user_id).first_name%>
+          </p>
+      </div>
+    <%end%>
+    <hr>
+  <%end%>
+<%else%>
+  No orders yet
+<%end%>

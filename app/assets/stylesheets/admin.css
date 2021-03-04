@@ -116,6 +116,11 @@
   > .Category-options {
   display: inline-block;
 }
+.Admin-ItemCategory-div:hover
+  > .Admin-ItemCategory-div-options
+  > .Item-options {
+  display: inline-block;
+}
 .Admin-set-active {
   height: 30px;
   width: 100px;
@@ -147,4 +152,11 @@
 .Modal-text {
   padding: 5px;
   font-size: 20px;
+}
+.Item-options {
+  display: none;
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

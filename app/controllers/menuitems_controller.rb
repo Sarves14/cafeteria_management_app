@@ -8,4 +8,19 @@ class MenuitemsController < ApplicationController
                  description: params[:description])
     redirect_to "/"
   end
+
+  def change
+    item = Item.find(params[:item_id])
+    item.item_name = params[:item_name]
+    item.price = params[:price]
+    item.description = params[:description]
+    item.save
+    redirect_to "/"
+  end
+
+  def delete
+    item = Item.find(params[:item_id])
+    item.destroy
+    redirect_to "/"
+  end
 end

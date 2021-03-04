@@ -7,7 +7,7 @@
 </p>
 <div class="Item-page">
   <div class="Menu">
-    <%Category.all.each do |category|%>
+    <%Category.where(status: "active").each do |category|%>
       <div class="ItemCategory">
         <h1 class="ItemCategory-name"><%=category.category_name%></h1>
           <%category.items.each do |category_item|%>

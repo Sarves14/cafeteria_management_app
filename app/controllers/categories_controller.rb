@@ -15,14 +15,21 @@ class CategoriesController < ApplicationController
 
   def update
     category = Category.find(params[:category_id])
+    category.status = category.status == "active" ? "inactive" : "active"
+    category.save
+    redirect_to "/"
+  end
+
+  def change
+    category = Category.find(params[:category_id])
     category.category_name = params[:category_name]
     category.save
     redirect_to "/"
   end
 
-  def destroy
+  def delete
     category = Category.find(params[:category_id])
-    Item.find_by(category_id: params[:category_id]).destroy_all
+    Item.where(category_id: params[:category_id]).destroy_all
     category.destroy
     redirect_to "/"
   end

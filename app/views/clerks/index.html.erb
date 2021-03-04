@@ -7,7 +7,7 @@
 </p>
 <div class="Order-offline-header" >
   <%= link_to items_path, class: "Order-offline" do%>
-    <p>Order for Offline Customer</p>
+    <p class="btn ">Order for Offline Customer</p>
   <%end%>
 </div>
 <h1 style="margin-left:20px;font-size:24px">Pending Orders</h1>
@@ -32,7 +32,7 @@
             <%=order_item.ordered_time.localtime.strftime("%d/%m/%y  %k:%M")%>
           </p>
           <%=form_with(url: "#{clerks_path}/#{order_item.id}", method: "put" , class: "Bill-element-text" ) do |form|%>
-            <%= form.submit :"Mark Complete", class: "Bill-mark-complete"%>
+            <%= form.submit :"Mark Complete", class: " btn btn-success"%>
           <%end%>
         </div>
       </div>

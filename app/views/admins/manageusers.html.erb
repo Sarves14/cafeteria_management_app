@@ -1,0 +1,47 @@
+<p class="Home-header">
+  <span class="Home-welcome">
+  Hello <%=@current_user.first_name%>,
+  </span>
+</p>
+  <div class="Bill" style="display:flex;justify-content:space-evenly;margin:30px 30px;">
+    <%= link_to "Create Admin" , create_admin_path , method: "get",
+      class: "btn btn-primary m-2"%>
+     <%= link_to "Create Clerk" , create_clerk_path , method: "get",
+      class: "btn btn-primary m-2"%>
+  </div>
+<h1 class="Order-summary">All users</h1>
+
+<%if User.all.count > 0%>
+  <%users = User.all%>
+  <div class="Bill" style="display:flex;justify-content:space-evenly">
+
+    <p style="width:150px">User Id</p>
+    <p style="width:150px">
+      Email
+    </p>
+     <p style="width:150px">
+      First Name
+    </p>
+    <p style="width:150px">
+      Account type
+    </p>
+
+  </div>
+  <%users.each do |user|%>
+      <div class="Bill" style="display:flex;justify-content:space-evenly">
+          <p style="width:150px"><%=user.id%></p>
+          <p style="width:150px">
+            <%=user.email%>
+          </p>
+          <p style="width:150px">
+            <%=user.first_name%>
+          </p>
+          <p style="width:150px">
+            <%=user.account_type%>
+          </p>
+      </div>
+    <hr>
+  <%end%>
+<%else%>
+  No users yet
+<%end%>
