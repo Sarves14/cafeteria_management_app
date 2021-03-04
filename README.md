@@ -1,6 +1,6 @@
 # CAFETERIA-MANAGEMENT-APP
   A simple Cafeteria Management App  
-  Heroku-link: https://sarves-cafeteria-app-saas-201.herokuapp.com
+  Heroku-link: https://sarves-cafeteria-app-saas-201.herokuapp.com   
   Admin account(admin@admin.com, root)
   
   # ABOUT THE APP
