@@ -41,3 +41,8 @@
   margin-bottom: 20px;
   color: darkred;
 }
+.Sign {
+  width: 600px;
+  margin: 32px auto;
+  text-align: center;
+}

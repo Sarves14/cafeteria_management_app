@@ -1,9 +1,4 @@
 <p class="Signup-header">Cafeteria App</p>
-<p class="Home-header">
-  <span class="Home-welcome">
-  Hello <%=@current_user.first_name%>,
-  </span>
-</p>
 <h1 class="Order-summary">Your Orders</h1>
 <%if Order.where("user_id = ? ",@current_user.id).count > 0%>
   <%orders = Order.where("user_id = ?",@current_user.id)%>
