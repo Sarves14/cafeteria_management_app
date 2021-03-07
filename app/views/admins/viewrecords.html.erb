@@ -10,23 +10,24 @@
   <%orders = Order.all%>
   <div class="Bill" style="display:flex;justify-content:space-evenly">
 
-    <p style="width:150px">Order id</p>
-    <p style="width:150px">
+    <p style="width:150px; text-align:center">Order id</p>
+    <p style="width:150px; text-align:center">
       User id
     </p>
-    <p style="width:150px">
+    <p style="width:150px; text-align:center">
       User Name
     </p>
 
   </div>
+  <hr>
   <%orders.each do |order_item|%>
     <%= link_to "#{orders_path}/#{order_item.id}", class: "Order-link" do%>
       <div class="Bill" style="display:flex;justify-content:space-evenly">
-          <p style="width:150px"><%=order_item.id%></p>
-          <p style="width:150px">
+          <p style="width:150px; text-align:center"><%=order_item.id%></p>
+          <p style="width:150px; text-align:center">
             <%=order_item.user_id%>
           </p>
-          <p style="width:150px">
+          <p style="width:150px; text-align:center">
             <%=User.find(order_item.user_id).first_name%>
           </p>
       </div>

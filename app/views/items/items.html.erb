@@ -3,7 +3,7 @@
   <span class="Home-welcome">
   Welcome <%=@current_user.first_name%>,
   </span>
-  <span class="Home-signout"><%= link_to "Sign-out" , delete_session_path , method: "delete"%>
+  <span ><%= link_to "Sign-out" , delete_session_path , method: "delete", class:"btn btn-danger"%>
   </span>
 </p>
 <div class="Item-page">

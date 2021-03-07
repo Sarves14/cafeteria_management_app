@@ -3,13 +3,13 @@
   <span class="Home-welcome">
   Welcome <%=@current_user.first_name%>,
   </span>
-  <span class="Home-signout"><%= link_to "viewrecords" ,
-  view_records_path , method: "get", target: :_blank%>
+  <span ><%= link_to "View records" ,
+  view_records_path , method: "get", target: :_blank , class:"btn btn-warning"%>
   </span>
-  <span class="Home-signout"><%= link_to "manageusers" ,
-  manage_users_path , method: "get", target: :_blank%>
+  <span ><%= link_to "Manage users" ,
+  manage_users_path , method: "get", target: :_blank, class:"btn btn-warning"%>
   </span>
-  <span class="Home-signout"><%= link_to "Sign-out" , delete_session_path , method: "delete"%>
+  <span ><%= link_to "Sign-out" , delete_session_path , method: "delete", class:"btn btn-danger"%>
   </span>
 </p>
 <div class="Admin-menu">
@@ -46,16 +46,16 @@
         <div style="margintop:10px;margin-bottom:20px">
           <%=form_with(url: "updatecategory", method: "patch" ) do |form|%>
             <%= form.hidden_field :category_id , value:category.id %>
-            <%= form.submit :"Set InActive" , class: "btn btn-danger"%>
+            <%= form.submit :"Set In-Active" , class: "btn btn-danger"%>
           <%end%>
         </div>
       <%end%>
       <%category.items.each do |category_item|%>
         <div class="Admin-ItemCategory-div">
-            <span style="margin-right:30px;font-size:20px" >
-              <%=category_item.item_name%>
-              <span style="margin-left:50px;font-size:20px">Rs. <%=category_item.price%></span>
-            </span>
+            <p class="ItemCategory-item-element">
+                <span class="ItemCategory-item-text"><%=category_item.item_name%></span>
+                <span class="ItemCategory-item-text">Rs. <%=category_item.price%></span>
+              </p>
             <div class="Admin-ItemCategory-div-options">
               <input type="image" src="edit.png" alt="edit" class="Item-options"
               data-toggle="modal" data-target="#edit-item-modal" data-id=<%=category_item.id%>>
