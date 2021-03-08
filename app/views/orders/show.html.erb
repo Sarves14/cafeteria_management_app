@@ -4,12 +4,12 @@
   <div class="Bill-header">
     <div>Order id: <%=order_item.id%></div>
     <div>Ordered At:
-      <%=order_item.ordered_time.localtime.strftime("%d/%m/%Y  %k:%M")%>
+      <%=order_item.ordered_time.in_time_zone("Chennai").strftime("%d/%m/%Y  %k:%M")%>
     </div>
     <p>
       <%if order_item.delivered_time%>
         Received At:
-        <%=order_item.delivered_time.localtime.strftime("%d/%m/%Y  %k:%M")%>
+        <%=order_item.delivered_time.in_time_zone("Chennai").strftime("%d/%m/%Y  %k:%M")%>
       <%else%>
         Pending
       <%end%>

@@ -30,14 +30,14 @@
   </div>
   <%users.each do |user|%>
       <div class="Bill" style="display:flex;justify-content:space-evenly">
-          <p style="width:150px"><%=user.id%></p>
-          <p style="width:150px">
+          <p style="width:150px;overflow-wrap: break-word;"><%=user.id%></p>
+          <p style="width:150px;overflow-wrap: break-word;">
             <%=user.email%>
           </p>
-          <p style="width:150px">
+          <p style="width:150px;overflow-wrap: break-word;">
             <%=user.first_name%>
           </p>
-          <p style="width:150px">
+          <p style="width:150px;overflow-wrap: break-word;">
             <%=user.account_type%>
           </p>
       </div>
