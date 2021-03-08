@@ -96,7 +96,7 @@
               <div class="Bill-header">
                 <p>Order id: <%=order_item.id%><p>
                 <p>
-                  <%=order_item.ordered_time.localtime.strftime("%d/%m/%y  %k:%M")%>
+                  <%=order_item.ordered_time.in_time_zone("Chennai").strftime("%d/%m/%y  %k:%M")%>
                 </p>
               </div>
             </div>
