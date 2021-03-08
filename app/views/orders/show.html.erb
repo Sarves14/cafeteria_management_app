@@ -22,6 +22,7 @@
     <p class="Bill-element-text">Quantity</p>
     <p class="Bill-element-text">Price</p>
   </div>
+  <hr>
     <%items=Orderitem.where("order_id = ?",order_item.id)%>
     <%items.each_with_index do |item,i|%>
       <div class="Bill-element">
