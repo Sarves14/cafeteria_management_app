@@ -47,7 +47,7 @@
 }
 .ItemCategory-item-text {
   width:300px;
-
+  overflow-wrap: break-word;
 }
 
 .ItemCategory-item-elementtxt {
@@ -83,6 +83,7 @@
   display: inline-block;
   margin-bottom: 2px;
   font-size: 20px;
+  overflow-wrap: break-word;
 }
 
 .Cart-checkout {
@@ -130,6 +131,7 @@
   width: 150px;
   margin-bottom: 5px;
   margin-top: 5px;
+  overflow-wrap: break-word;
 }
 .Order-link {
   text-decoration: none;
