@@ -1,7 +1,7 @@
 <p class="Signup-header">Cafeteria App</p>
+  <p class="Signup-header">Create Clerk</p>
 <div class="Sign">
   <div class="SignupForm">
-  <p class="Sign-header">Create Clerk</p>
     <%=form_with(url: create_clerk_path , method: "post") do |form| %>
       <div class="SignupForm-input">
         <p class="SignupForm-label">First Name</p>
@@ -20,7 +20,7 @@
       <%=form.password_field :password, class: "SignupForm-text" %>
       </div>
       <div class="SignupForm-input">
-      <%= form.submit "Sign-up", class: "SignupForm-submit"%>
+      <%= form.submit "Create", class: "btn btn-success"%>
       </div>
     <%end%>
   </div>
