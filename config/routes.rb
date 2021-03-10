@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get "/createclerk", to: "admins#createclerk", as: :create_clerk
   post "/createadmin", to: "admins#createadminuser"
   post "/createclerk", to: "admins#createclerkuser"
+  get "/changefilters", to: "admins#change_filters", as: :change_filters
 end

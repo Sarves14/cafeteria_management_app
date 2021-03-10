@@ -5,9 +5,26 @@
   </span>
 </p>
 <h1 class="Order-summary">Orders</h1>
-
-<%if Order.all.count > 0%>
-  <%orders = Order.all%>
+<%=form_with(url: view_records_path , method: "get") do |form|%>
+  <div class="Admin-filter">
+    <div>
+      <label for="from">From:</label>
+      <input type="date" id="from" name="from" value=<%=@from%>>
+    </div>
+    <div>
+      <label for="to">To:</label>
+      <input type="date" id="to" name="to" value=<%=@to%>>
+    </div>
+    <div>
+      <label for="user">User</label>
+      <%= form.select :user, ["all"]+(User.where("account_type != ?", "admin").map{|user| user.first_name}),
+      selected: @user%>
+      <%= form.submit "Appy Filters", class: "btn btn-sm btn-success ml-2"%>
+    </div>
+  </div>
+<%end%>
+<%if Order.get_orders(@user, @from, @to).count > 0%>
+  <%orders = Order.get_orders(@user, @from, @to)%>
   <div class="Bill" style="display:flex;justify-content:space-evenly">
 
     <p style="width:150px; text-align:center">Order id</p>

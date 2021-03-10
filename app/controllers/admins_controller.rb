@@ -5,6 +5,15 @@ class AdminsController < ApplicationController
   end
 
   def viewrecords
+    if !params[:from] && !params[:to] && !params[:user]
+      @from = Order.first.ordered_time
+      @to = Date.today + 1
+      @user = "all"
+    else
+      @from = params[:from]
+      @to = params[:to]
+      @user = params[:user]
+    end
     render "viewrecords"
   end
 
@@ -56,5 +65,12 @@ class AdminsController < ApplicationController
         redirect_to create_clerk_path
       end
     end
+  end
+
+  def change_filters
+    @from = params[:from]
+    @to = params[:to]
+    @user = params[:user]
+    redirect_to view_records_path
   end
 end

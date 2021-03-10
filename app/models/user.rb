@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :password, presence: true
   has_secure_password
   has_many :carts
+  has_many :orders
 
   def to_pleasant_string
     "#{id} #{first_name} #{email}"
